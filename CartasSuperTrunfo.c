@@ -8,6 +8,8 @@ typedef struct {
     float area;
     float pib;
     int pontos_turisticos;
+    float densidade_populacional;
+    float pib_per_capita;
 } Carta;
 
 int main() {
@@ -27,6 +29,10 @@ int main() {
     printf("Número de pontos turísticos: ");
     scanf("%d", &carta1.pontos_turisticos);
 
+    // Calculando novos atributos para a primeira carta
+    carta1.densidade_populacional = carta1.populacao / carta1.area;
+    carta1.pib_per_capita = carta1.pib * 1000000000 / carta1.populacao;
+
     // Entrada de dados para a segunda carta
     printf("\n--- Cadastro da Carta 2 ---\n");
     printf("Código da cidade (ex: B02): ");
@@ -40,6 +46,10 @@ int main() {
     printf("Número de pontos turísticos: ");
     scanf("%d", &carta2.pontos_turisticos);
 
+    // Calculando novos atributos para a segunda carta
+    carta2.densidade_populacional = carta2.populacao / carta2.area;
+    carta2.pib_per_capita = carta2.pib * 1000000000 / carta2.populacao;
+
     // Limpar a tela
     system("clear");
 
@@ -50,6 +60,8 @@ int main() {
     printf("Área: %.2f km²\n", carta1.area);
     printf("PIB: %.2f bilhões\n", carta1.pib);
     printf("Pontos turísticos: %d\n", carta1.pontos_turisticos);
+    printf("Densidade Populacional: %.2f hab/km²\n", carta1.densidade_populacional);
+    printf("PIB per Capita: %.2f\n", carta1.pib_per_capita);
 
     printf("\n--- Dados da Carta 2 ---\n");
     printf("Código: %s\n", carta2.codigo);
@@ -57,6 +69,8 @@ int main() {
     printf("Área: %.2f km²\n", carta2.area);
     printf("PIB: %.2f bilhões\n", carta2.pib);
     printf("Pontos turísticos: %d\n", carta2.pontos_turisticos);
+    printf("Densidade Populacional: %.2f hab/km²\n", carta2.densidade_populacional);
+    printf("PIB per Capita: %.2f\n", carta2.pib_per_capita);
 
     return 0;
 }
